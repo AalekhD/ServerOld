@@ -62,29 +62,30 @@ def login():
                 #print(value.split(','))
                 t = int(value[0].strip())
                 c = int(value[1].strip())
-                x = float(int(value[2].strip())/100)
-                y = float(int(value[3].strip())/100)
-                z = float(int(value[4].strip())/100)
+                x = float(int(value[2].strip())/1000)
+                y = float(int(value[3].strip())/1000)
+                z = float(int(value[4].strip())/1000)
 
             file = open('fft_x_axis.txt','r')
             data = file.readlines()
             file.close()
             line_labels_x = [i+1 for i in range(len(data))]
-            line_values_x = [d.strip() for d in data]
-        
+            line_values_x = [float(int(d.strip())/1000) for d in data]
+            x_max = max(line_values_x)+0.5
             file = open('fft_y_axis.txt','r')
             data = file.readlines()
             file.close()
             line_labels_y = [i+1 for i in range(len(data))]
-            line_values_y = [d.strip() for d in data]
-
+            line_values_y = [float(int(d.strip())/1000) for d in data]
+            y_max = max(line_values_y)+0.5
             file = open('fft_z_axis.txt','r')
             data = file.readlines()
             file.close()
             line_labels_z = [i+1 for i in range(len(data))]
-            line_values_z = [d.strip() for d in data]
-        
-            return render_template('plotg.html',t1=t,c1=c,h1=x,v1=y,a1=z,max=10,labels_x=line_labels_x, values_x=line_values_x,labels_y=line_labels_y, values_y=line_values_y,labels_z=line_labels_z, values_z=line_values_z)
+            line_values_z = [float(int(d.strip())/1000) for d in data]
+            z_max = max(line_values_z)+0.5
+            print(x_max,y_max,z_max)
+            return render_template('plotg.html',t1=t,c1=c,h1=x,v1=y,a1=z,x_max=x_max,labels_x=line_labels_x, values_x=line_values_x,y_max=y_max,labels_y=line_labels_y, values_y=line_values_y,z_max=z_max,labels_z=line_labels_z, values_z=line_values_z)
 
                 #requests.post(url="http://127.0.0.1:5000/dataDisplay")
     else:
@@ -95,30 +96,31 @@ def login():
             #print(value.split(','))
             t = int(value[0].strip())
             c = int(value[1].strip())
-            x = float(int(value[2].strip())/100)
-            y = float(int(value[3].strip())/100)
-            z = float(int(value[4].strip())/100)
+            x = float(int(value[2].strip())/1000)
+            y = float(int(value[3].strip())/1000)
+            z = float(int(value[4].strip())/1000)
             file.close()
             
             file = open('fft_x_axis.txt','r')
             data = file.readlines()
             file.close()
             line_labels_x = [i+1 for i in range(len(data))]
-            line_values_x = [d.strip() for d in data]
-        
+            line_values_x = [float(int(d.strip())/1000) for d in data]
+            x_max = max(line_values_x)+0.5
             file = open('fft_y_axis.txt','r')
             data = file.readlines()
             file.close()
             line_labels_y = [i+1 for i in range(len(data))]
-            line_values_y = [d.strip() for d in data]
-
+            line_values_y = [float(int(d.strip())/1000) for d in data]
+            y_max = max(line_values_y)+0.5
             file = open('fft_z_axis.txt','r')
             data = file.readlines()
             file.close()
             line_labels_z = [i+1 for i in range(len(data))]
-            line_values_z = [d.strip() for d in data]
-        
-            return render_template('plotg.html',t1=t,c1=c,h1=x,v1=y,a1=z,max=10,labels_x=line_labels_x, values_x=line_values_x,labels_y=line_labels_y, values_y=line_values_y,labels_z=line_labels_z, values_z=line_values_z)
+            line_values_z = [float(int(d.strip())/1000) for d in data]
+            z_max = max(line_values_z)+0.5
+            print(x_max,y_max,z_max)
+            return render_template('plotg.html',t1=t,c1=c,h1=x,v1=y,a1=z,x_max=x_max,labels_x=line_labels_x, values_x=line_values_x,y_max=y_max,labels_y=line_labels_y, values_y=line_values_y,z_max=z_max,labels_z=line_labels_z, values_z=line_values_z)
 
 @app.route('/data', methods=['GET'])
 def getSensorData():
@@ -242,33 +244,36 @@ def dashboardpg():
     #print(value.split(','))
     t = int(value[0].strip())
     c = int(value[1].strip())
-    x = float(int(value[2].strip())/100)
-    y = float(int(value[3].strip())/100)
-    z = float(int(value[4].strip())/100)
+    x = float(int(value[2].strip())/1000)
+    y = float(int(value[3].strip())/1000)
+    z = float(int(value[4].strip())/1000)
     file.close()
     
     file = open('fft_x_axis.txt','r')
     data = file.readlines()
     file.close()
     line_labels_x = [i+1 for i in range(len(data))]
-    line_values_x = [d.strip() for d in data]
-
+    line_values_x = [float(int(d.strip())/1000) for d in data]
+    x_max = max(line_values_x)+0.5
     file = open('fft_y_axis.txt','r')
     data = file.readlines()
     file.close()
     line_labels_y = [i+1 for i in range(len(data))]
-    line_values_y = [d.strip() for d in data]
-
+    line_values_y = [float(int(d.strip())/1000) for d in data]
+    y_max = max(line_values_y)+0.5
     file = open('fft_z_axis.txt','r')
     data = file.readlines()
     file.close()
     line_labels_z = [i+1 for i in range(len(data))]
-    line_values_z = [d.strip() for d in data]
-
-    return render_template('plotg.html',t1=t,c1=c,h1=x,v1=y,a1=z,max=10,labels_x=line_labels_x, values_x=line_values_x,labels_y=line_labels_y, values_y=line_values_y,labels_z=line_labels_z, values_z=line_values_z)
-
+    line_values_z = [float(int(d.strip())/1000) for d in data]
+    z_max = max(line_values_z)+0.5
+    
+    return render_template('plotg.html',t1=t,c1=c,h1=x,v1=y,a1=z,x_max=x_max,labels_x=line_labels_x, values_x=line_values_x,y_max=y_max,labels_y=line_labels_y, values_y=line_values_y,z_max=z_max,labels_z=line_labels_z, values_z=line_values_z)
 
 if __name__=='__main__':
 #     app.debug = True
     app.run()
+
+
+
 
