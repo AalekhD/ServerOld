@@ -300,13 +300,12 @@ img {vertical-align: middle;}
       // get bar chart canvas
       var mychart = document.getElementById("chart_x").getContext("2d");
 
-      steps = 5
-      max = 3
+      xmax = {{x_max}}
       // draw bar chart
       var LineChartDemo = new Chart(mychart).Line(barData, {
         scaleOverride: true,
-        scaleSteps: steps,
-        scaleStepWidth: Math.ceil(max / steps),
+        scaleSteps: xmax/0.5,
+        scaleStepWidth: 0.5,
         scaleStartValue: 0,
         scaleShowVerticalLines: true,
         scaleShowGridLines : true,
@@ -377,13 +376,12 @@ img {vertical-align: middle;}
       // get bar chart canvas
       var mychart = document.getElementById("chart_y").getContext("2d");
 
-      steps = 5
-      max = 3
+      ymax = {{y_max}}
       // draw bar chart
       var LineChartDemo = new Chart(mychart).Line(barData, {
         scaleOverride: true,
-        scaleSteps: steps,
-        scaleStepWidth: Math.ceil(max / steps),
+        scaleSteps: ymax/0.5,
+        scaleStepWidth: 0.5,
         scaleStartValue: 0,
         scaleShowVerticalLines: true,
         scaleShowGridLines : true,
@@ -452,13 +450,13 @@ img {vertical-align: middle;}
       // get bar chart canvas
       var mychart = document.getElementById("chart_z").getContext("2d");
 
-      steps = 5
-      max = 3
+
+      zmax = {{z_max}}
       // draw bar chart
       var LineChartDemo = new Chart(mychart).Line(barData, {
         scaleOverride: true,
-        scaleSteps: steps,
-        scaleStepWidth: Math.ceil(max / steps),
+        scaleSteps: zmax/0.5,
+        scaleStepWidth: 0.5,
         scaleStartValue: 0,
         scaleShowVerticalLines: true,
         scaleShowGridLines : true,
