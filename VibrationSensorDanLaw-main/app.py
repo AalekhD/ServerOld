@@ -61,7 +61,10 @@ def login():
                 value = data[len(data)-1].split(',')
                 #print(value.split(','))
                 t = int(value[0].strip())
-                c = int(value[1].strip())
+                try:
+                    c = int(value[1].strip())
+                except:
+                    c = 0
                 x = float(int(value[2].strip())/1000)
                 y = float(int(value[3].strip())/1000)
                 z = float(int(value[4].strip())/1000)
@@ -95,7 +98,10 @@ def login():
             value = data[len(data)-1].split(',')
             #print(value.split(','))
             t = int(value[0].strip())
-            c = int(value[1].strip())
+            try:
+                    c = int(value[1].strip())
+            except:
+                    c = 0
             x = float(int(value[2].strip())/1000)
             y = float(int(value[3].strip())/1000)
             z = float(int(value[4].strip())/1000)
@@ -146,7 +152,10 @@ def sendSensorData():
         file.close()
         '''    
         t = random.randint(23, 50)
-        c = random.randint(3, 9)
+        try:
+            c = int(value[1].strip())
+        except:
+            c = 0
         x = random.randint(0, 3)
         y = random.randint(0, 3)
         z = random.randint(0, 3)
